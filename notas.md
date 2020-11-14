@@ -41,3 +41,13 @@ paperswithcode.com browse state of the art, entrega los papers con el código (d
 En el paper Detection and diagnosis pf dental caries using a deep learning-based convolutional neural network algorithm usaron una red GoogLeNet Inception v3 CNN pre-entrenada para el preprocesamiento, y los datasets fueron entrenados usando transfer learning. Un total de 9 modulos de inception fueron usados, incluyendo un clasificador auxiliar, dos capas totalmente conectadas, y funciones de softmax. "The training set was separated randomly into 32 batches for every epoch, and 1000 epochs were run at a learning rate of 0.01. To provide better detection of dental caries, fine tuning was used to optimize the weights and improve the output power by adjusting the hyperparameters"
 
 Buscar y leer el paper Deep Learning for Automated Detection of Cyst and Tumors of the Jaw in Panoramic Radiographs
+
+Documento importante de [Análisis de situación de salud bucal](https://web.minsal.cl/sites/default/files/files/An%C3%A1lisis%20de%20Situaci%C3%B3n%20Salud%20Bucal%20final%20pdf.pdf) del Minsal
+
+Esta es la primera arquitectura usada para el modelo:
+
+![primer modelo](./first_model.png)
+
+Y estos son los resultados obtenidos con ella:
+
+![primeros resultados](./first_result.png)
