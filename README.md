@@ -10,4 +10,4 @@ Resultados con 90 epochs
 ![Resultados con 90 epochs](./90_epoch.png)
 
 Resultados con 300 epochs
-![Resultados con 300 epochs](./300_epochs)
+![Resultados con 300 epochs](./300_epoch.png)
