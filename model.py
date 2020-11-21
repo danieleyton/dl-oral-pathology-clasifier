@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 image_size = (75,75)
 train_ds = tf.keras.preprocessing.image_dataset_from_directory(
         "Data DL",
-        validation_split=0.1,
+        validation_split=0.28,
         labels='inferred',
         subset="training",
         image_size=image_size,
@@ -16,7 +16,7 @@ train_ds = tf.keras.preprocessing.image_dataset_from_directory(
         )
 val_ds = tf.keras.preprocessing.image_dataset_from_directory(
         "Data DL",
-        validation_split=0.1,
+        validation_split=0.28,
         labels='inferred',
         subset="validation",
         image_size=image_size,
@@ -58,21 +58,21 @@ plt.show()
 model = models.Sequential()
 model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(75, 75, 3)))
 model.add(layers.MaxPooling2D((2, 2)))
-model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+model.add(layers.Conv2D(64, (3, 3), activation='relu'))#, kernel_regularizer=tf.keras.regularizers.l2(l=0.008)))
 model.add(layers.MaxPooling2D((2, 2)))
-model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+model.add(layers.Conv2D(64, (3, 3), activation='relu', kernel_regularizer=tf.keras.regularizers.l2(l=0.04)))
  
 model.summary()
 
 model.add(layers.Flatten())
-model.add(layers.Dense(64, activation='relu'))
+model.add(layers.Dense(64, activation='relu', kernel_regularizer=tf.keras.regularizers.l2(l=0.01)))
 model.add(layers.Dense(19)) # number of classes (output)
 
 model.compile(optimizer='adam',
         loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
         metrics=['accuracy'])
 
-history = model.fit(train_ds, epochs=300,
+history = model.fit(train_ds, epochs=30,
         validation_data=(val_ds))
 
 plt.plot(history.history['accuracy'], label='accuracy')
