@@ -51,3 +51,10 @@ Esta es la primera arquitectura usada para el modelo:
 Y estos son los resultados obtenidos con ella:
 
 ![primeros resultados](./first_result.png)
+
+
+Probar diferentes tamaños de batch, aumentar batch size, disminuir batch size. También probar con diferentes optimizadores.
+
+Buscar sobre redes generativas adversas (GAN) para crear data artificial.
+
+Se probaron valores de batch size de 32, 64 y 91 (totalidad del dataset), teniendo resultares similares en todos ellos.

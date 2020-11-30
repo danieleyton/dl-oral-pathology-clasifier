@@ -4,7 +4,7 @@ import numpy as np
 from tensorflow.keras import datasets, layers, models
 import matplotlib.pyplot as plt
 
-image_size = (75,75)
+image_size = (150,150)
 train_ds = tf.keras.preprocessing.image_dataset_from_directory(
         "Data DL",
         validation_split=0.28,
@@ -13,7 +13,7 @@ train_ds = tf.keras.preprocessing.image_dataset_from_directory(
         image_size=image_size,
         seed=1337,
         label_mode='int'
-        )
+)
 val_ds = tf.keras.preprocessing.image_dataset_from_directory(
         "Data DL",
         validation_split=0.28,
@@ -22,14 +22,10 @@ val_ds = tf.keras.preprocessing.image_dataset_from_directory(
         image_size=image_size,
         seed=1337,
         label_mode='int'
-        )
-
-#(train_images, train_labels), (test_images, test_labels) = datasets.cifar10.load_data()
+)
 
 # Normalize pixel values to be between 0 and 1
 #train_images, test_images = train_images / 255.0, test_images / 255.0
-
-#class_names = ['airplane', 'automobile', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
 
 plt.figure(figsize=(10,10))
 for images, labels in train_ds.take(1):
@@ -38,16 +34,6 @@ for images, labels in train_ds.take(1):
         plt.imshow(images[i].numpy().astype("uint8"))
         plt.title(int(labels[i]))
         plt.axis("off")
-# for i in range(25):
-#     plt.subplot(5,5,i+1)
-#     plt.xticks([])
-#     plt.yticks([])
-#     plt.grid(False)
-#     plt.imshow(train_ds)
-    #plt.imshow(train_ds[i], cmap=plt.cm.binary)
-    # The CIFAR labels happen to be arrays,
-    # which is why you need the extra index
-    #plt.xlabel(class_names[train_labels[i][0]])
 plt.show()
 
 #labels = train_ds.from_tensor_slices(labels)
@@ -56,7 +42,7 @@ plt.show()
 #    print(label.numpy())
 
 model = models.Sequential()
-model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(75, 75, 3)))
+model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(150, 150, 3)))
 model.add(layers.MaxPooling2D((2, 2)))
 model.add(layers.Conv2D(64, (3, 3), activation='relu'))#, kernel_regularizer=tf.keras.regularizers.l2(l=0.008)))
 model.add(layers.MaxPooling2D((2, 2)))
@@ -68,7 +54,8 @@ model.add(layers.Flatten())
 model.add(layers.Dense(64, activation='relu', kernel_regularizer=tf.keras.regularizers.l2(l=0.01)))
 model.add(layers.Dense(19)) # number of classes (output)
 
-model.compile(optimizer='adam',
+opt= tf.keras.optimizers.Adam(learning_rate=0.0025)
+model.compile(optimizer=opt,
         loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
         metrics=['accuracy'])
 
