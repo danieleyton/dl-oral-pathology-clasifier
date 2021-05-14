@@ -1,0 +1,95 @@
+\documentclass[12pt,letterpaper]{article}
+
+% Librerías a utilizar
+\usepackage[utf8]{inputenc}	% Codificación 
+\usepackage[spanish]{babel}	% Idioma
+\usepackage{natbib}			% Bibliografía
+\usepackage{graphicx}		% Imagenes
+\usepackage{indentfirst}		% Sangría
+\usepackage{amsmath, amsfonts, amssymb}	% Figuras matemáticas
+\usepackage{url}							% URL
+\usepackage{listings}
+\usepackage{subcaption}
+
+\lstset{language=Python,
+	basicstyle={\small\ttfamily}	
+}
+
+\usepackage[left=3cm,right=2cm,top=2cm,bottom=3cm]{geometry}
+
+\setlength{\parindent}{2cm}	% Sangría en los párrafos
+\renewcommand{\baselinestretch}{1.5}	% Interlineado
+
+% Renombrar ciertos títulos del texto
+\renewcommand\spanishcontentsname{Tabla de contenidos}
+\renewcommand\spanishrefname{Bibliografía}
+
+% Inicio del documento
+\begin{document}
+
+%%%%%%%%% PORTADA %%%%%%%%%
+
+\newpage
+\vspace*{-.5cm}
+% Logo institucional
+\begin{picture}(18,4)(0,30)
+	\put(350,-20){\includegraphics[scale=0.25]{./images/LogoUsach.pdf}}
+\end{picture}
+
+\sloppy
+\thispagestyle{empty}
+\vspace*{-1.6cm}
+
+% Datos institucionales
+\begin{center}
+	{\bf \mbox{\large UNIVERSIDAD DE SANTIAGO DE CHILE}}\\
+	{\bf \mbox{FACULTAD DE INGENIER\'IA}}\\
+	{\bf \mbox{DEPARTAMENTO DE INGENIER\'IA INFORM\'ATICA}}\\
+\end{center}
+
+	\vspace{5cm}
+	%Título del trabajo
+	\begin{center}
+	\Large
+		\textbf{Informe de Estado de Avance}
+	\end{center}
+	
+	% Datos personales
+	\vspace*{5.5cm}
+	\begin{flushright}
+        \begin{footnotesize}
+        \begin{tabular}[H]{p{5cm} p{8cm}}
+            Título del tema: & Reconocimiento de patologías bucales por medio de modelos de aprendizaje profundo\\
+			Profesor guía: & Gonzalo Acuña\\
+            Fecha de inscripción del tema: & 08 de Octubre de 2020\\
+            Alumno: & Daniel Cristobal Labra Leyton \\
+            Carrera: & Ingeniería de ejecución en computación e informática\\
+            Fecha de egreso: & 26 de Septiembre de 2020\\
+            Fecha de entrega del informe: & 20 de Agosto de 2021\\
+
+		\end{tabular}
+        \end{footnotesize}
+	\end{flushright}
+	\begin{center}
+		\vspace{1.5cm}
+		% Fecha
+		\Today
+	\end{center}
+
+\newpage
+\tableofcontents
+\thispagestyle{empty}
+
+\newpage
+\renewcommand{\thepage}{\arabic{page}}
+\setcounter{page}{1}
+
+% Capítulos agregados 
+\include{chapters/1-introduccion}
+
+\clearpage
+%\addcontentsline{toc}{section}{Bibliografía}
+%\bibliographystyle{apalike}
+%\bibliography{bibliografia}
+
+\end{document}
